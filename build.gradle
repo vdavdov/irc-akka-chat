@@ -1,6 +1,18 @@
 plugins {
     id 'scala'
+//    id application
 }
+
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+javafx {
+    version = "17.0.8"
+    modules = [ 'javafx.controls' ]
+}
+
 
 clean {
     delete 'build'
@@ -12,17 +24,41 @@ repositories {
         url "https://repo.akka.io/maven"
     }
 }
+
 def versions = [
-        ScalaBinary: "2.13"
+        ScalaBinary: "2.13",
+        AkkaVersion: "2.6.20",
+        LogbackVersion: "1.2.11",
+        JavaFXVersion: "17.0.1",
+        ScalaTestVersion: "3.2.10"
 ]
 
 dependencies {
-    // akka
-    implementation platform("com.typesafe.akka:akka-bom_${versions.ScalaBinary}:2.9.6")
+    // Akka
+    implementation platform("com.typesafe.akka:akka-bom_${versions.ScalaBinary}:${versions.AkkaVersion}")
+    implementation "com.typesafe.akka:akka-actor_${versions.ScalaBinary}"
     implementation "com.typesafe.akka:akka-cluster-typed_${versions.ScalaBinary}"
+    implementation "com.typesafe.akka:akka-cluster_${versions.ScalaBinary}"
+    implementation "com.typesafe.akka:akka-remote_${versions.ScalaBinary}"
+    implementation "com.typesafe.akka:akka-slf4j_${versions.ScalaBinary}"
+    implementation "com.typesafe.akka:akka-actor-typed_${versions.ScalaBinary}"
+    implementation "com.typesafe.akka:akka-stream-typed_${versions.ScalaBinary}"
+    implementation "ch.qos.logback:logback-classic:${versions.LogbackVersion}"
 
-    implementation 'org.scala-lang:scala-library:2.13.10'
-    testImplementation 'org.scalatest:scalatest_2.13:3.2.10'
+    // JavaFX
+    implementation "org.openjfx:javafx-controls:${versions.JavaFXVersion}"
+    implementation "org.openjfx:javafx-fxml:${versions.JavaFXVersion}"
+    implementation "org.openjfx:javafx-graphics:${versions.JavaFXVersion}"
+    implementation "org.openjfx:javafx-base:${versions.JavaFXVersion}"
+
+    // SLF4J
+    implementation "org.slf4j:slf4j-api:1.7.32"
+
+    // Scala
+    implementation "org.scala-lang:scala-library:${versions.ScalaBinary}"
+
+    // Testing
+    testImplementation "org.scalatest:scalatest_${versions.ScalaBinary}:${versions.ScalaTestVersion}"
 }
 
 sourceSets {
@@ -43,3 +79,12 @@ sourceSets {
         }
     }
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+//application {
+//    mainClassName = 'by.vdavdov.akka.Client'
+//}
