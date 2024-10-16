@@ -1,6 +1,5 @@
 plugins {
     id 'scala'
-//    id application
 }
 
 plugins {
@@ -10,8 +9,7 @@ plugins {
 
 javafx {
     version = "17.0.8"
-    modules = [ 'javafx.controls' ]
-}
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] }
 
 
 clean {
@@ -29,7 +27,7 @@ def versions = [
         ScalaBinary: "2.13",
         AkkaVersion: "2.6.20",
         LogbackVersion: "1.2.11",
-        JavaFXVersion: "17.0.1",
+        JavaFXVersion: "17.0.8",
         ScalaTestVersion: "3.2.10"
 ]
 
@@ -85,6 +83,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-//application {
-//    mainClassName = 'by.vdavdov.akka.Client'
-//}
+application {
+    mainClassName = 'by.vdavdov.akka.ClientFX'
+}
