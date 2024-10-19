@@ -16,23 +16,32 @@ object ChatActor {
   case class User(ref: ActorRef[String], name: String)
 
   def apply(): Behavior[Command] = Behaviors.setup { context =>
-    // Хранение участников группы
-    var users = Set.empty[User]
+    var users = Map.empty[String, User]
 
     Behaviors.receiveMessage {
       case SendMessage(user, message) =>
-        // Отправка сообщения всем пользователям группы
         context.log.info(s"Group message from $user: $message")
-        users.foreach { u =>
-          u.ref ! s"$user: $message" // Отправка сообщения на ActorRef участника
+        // Отправляем сообщения всем пользователям
+        context.log.info(s"Now in group is ${users.keys}")
+        users.values.foreach { u =>
+          context.log.info(s"Sending message to ${u.name}: $message")
+          u.ref ! s"$user: $message"
         }
         Behaviors.same
 
       case JoinGroup(user, replyTo) =>
-        val newUser = User(replyTo, user) // Создаем нового пользователя с его ActorRef
-        users += newUser
-        replyTo ! s"$user has joined the chat."
-        context.log.info(s"$user has joined the group.")
+        context.log.info(s"$user is trying to join the group")
+        if (!users.contains(user)) {
+          val newUser = User(replyTo, user)
+          users += (user -> newUser)
+          // Уведомляем пользователя о том, что он успешно присоединился
+          replyTo ! s"$user has joined the chat."
+          context.log.info(s"$user has joined the group.")
+        } else {
+          // Уведомляем пользователя о том, что он уже в чате
+          replyTo ! s"$user is already in the chat."
+          context.log.warn(s"$user is already in the chat.")
+        }
         Behaviors.same
 
       case PeerJoined(peerAddress) =>
@@ -40,15 +49,22 @@ object ChatActor {
         Behaviors.same
 
       case DirectMessage(from, to, message) =>
-        // Обработка прямых сообщений
-        context.log.info(s"Direct message from $from to $to: $message")
-        // Здесь может быть логика отправки сообщений конкретному участнику
+        users.get(to) match {
+          case Some(user) =>
+            user.ref ! s"Direct message from $from: $message"
+            context.log.info(s"Direct message from $from to $to: $message")
+          case None =>
+            context.log.warn(s"$to is not in the chat, unable to send direct message from $from")
+        }
         Behaviors.same
 
       case LeaveGroup(user) =>
-        // Удаляем пользователя при выходе
-        users = users.filterNot(_.name == user)
-        context.log.info(s"$user has left the group.")
+        if (users.contains(user)) {
+          users = users - user
+          context.log.info(s"$user has left the group.")
+        } else {
+          context.log.warn(s"$user attempted to leave the group but was not found.")
+        }
         Behaviors.same
     }
   }

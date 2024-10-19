@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.typesafe:ssl-config-core_2.13:0.4.3" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.typesafe" artifactId="ssl-config-core_2.13" version="0.4.3" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.typesafe/ssl-config-core_2.13/0.4.3/5c58ee9ae2ecc519a5db3658ed4275d4eacc723/ssl-config-core_2.13-0.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

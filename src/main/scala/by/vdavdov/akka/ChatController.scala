@@ -1,12 +1,11 @@
 package by.vdavdov.akka
 
+import akka.actor.TypedActor.context
+import akka.actor.typed.{ActorRef, Behavior}
+import akka.actor.typed.scaladsl.Behaviors
+import by.vdavdov.akka.ChatActor.User
 import javafx.fxml.FXML
 import javafx.scene.control.{Button, ListView, TextArea, TextField}
-import akka.actor.typed.ActorRef
-import akka.actor.typed.scaladsl.AskPattern._
-import akka.util.Timeout
-import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext.Implicits.global
 
 class ChatController {
 
@@ -18,54 +17,56 @@ class ChatController {
   private var sendButton: Button = _
   @FXML
   private var userList: ListView[String] = _
+  @FXML
+  private var directMessageButton: Button = _
   private var actorRef: ActorRef[ChatActor.Command] = _
+  private var username: String = _
+  private var actorRefString: ActorRef[String] = _
 
-  implicit val timeout: Timeout = 3.seconds
+  // Метод для получения сообщения из ChatActor
+  def receiveMessage(message: String): Unit = {
+    appendToChatArea(message)
+  }
 
-  // Устанавливаем ActorRef
-  def setActorRef(ref: ActorRef[ChatActor.Command]): Unit = {
+  // Устанавливаем ActorRef и имя пользователя
+  def setActorRef(ref: ActorRef[ChatActor.Command], user: String, refString : ActorRef[String]): Unit = {
     actorRef = ref
+    username = user
+    actorRefString = refString
 
-    // Действие для отправки сообщения
+    actorRef ! ChatActor.JoinGroup(username, actorRefString)
+
     sendButton.setOnAction(_ => {
       val message = messageField.getText
       if (message.nonEmpty) {
-        actorRef ! ChatActor.SendMessage("User", message)
+        actorRef ! ChatActor.SendMessage(username, message)
         appendToChatArea(s"You: $message")
         messageField.clear()
       }
     })
 
-    // При добавлении тестовой логики: присоединение к группе
-//    joinGroup("User")
-
-    // Например, также можно добавить действие при выходе из группы
-    // реализовав это в другом месте UI
+    directMessageButton.setOnAction(_ => {
+      val selectedUser = userList.getSelectionModel.getSelectedItem
+      val message = messageField.getText
+      if (selectedUser != null && message.nonEmpty) {
+        actorRef ! ChatActor.DirectMessage(username, selectedUser, message)
+        appendToChatArea(s"Private to $selectedUser: $message")
+        messageField.clear()
+      }
+    })
   }
 
-  // Метод для добавления сообщения в окно чата
   private def appendToChatArea(message: String): Unit = {
     chatArea.appendText(message + "\n")
   }
 
-  // Присоединение к группе
-//  def joinGroup(username: String): Unit = {
-//    // Отправка сообщения о присоединении в чат
-//    actorRef ! ChatActor.JoinGroup(username, actorRef)
-//    appendToChatArea(s"$username has joined the chat.")
-//  }
-
-  // Можно создать метод для обработки выхода из группы
-  def leaveGroup(username: String): Unit = {
+  def leaveGroup(): Unit = {
     actorRef ! ChatActor.LeaveGroup(username)
     appendToChatArea(s"$username has left the chat.")
   }
 
-  // Метод для отправки прямого сообщения
-  def sendDirectMessage(to: String, message: String): Unit = {
-    if (message.nonEmpty) {
-      actorRef ! ChatActor.DirectMessage("User", to, message)
-      appendToChatArea(s"Private to $to: $message")
-    }
+  def updateUserList(users: List[String]): Unit = {
+    userList.getItems.clear()
+    users.foreach(userList.getItems.add)
   }
 }

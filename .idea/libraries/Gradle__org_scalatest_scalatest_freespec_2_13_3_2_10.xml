@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scalatest:scalatest-freespec_2.13:3.2.10" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.scalatest" artifactId="scalatest-freespec_2.13" version="3.2.10" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scalatest/scalatest-freespec_2.13/3.2.10/56dcabcabeb62e3377ded849ad750421317a89/scalatest-freespec_2.13-3.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.lmdbjava:lmdbjava:0.7.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.lmdbjava" artifactId="lmdbjava" version="0.7.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lmdbjava/lmdbjava/0.7.0/b4996b822444581bf7a235e6187baa7e6d5949d7/lmdbjava-0.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

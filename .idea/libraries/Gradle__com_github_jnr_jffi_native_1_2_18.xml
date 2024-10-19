@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.jnr:jffi:native:1.2.18" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.github.jnr" artifactId="jffi" version="1.2.18" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jffi/1.2.18/fb54851e631ff91651762587bc3c61a407d328df/jffi-1.2.18-native.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scalatest:scalatest-funsuite_2.13:3.2.10" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.scalatest" artifactId="scalatest-funsuite_2.13" version="3.2.10" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scalatest/scalatest-funsuite_2.13/3.2.10/ef7e8ae6397919e5bfd62b122ba4558289001342/scalatest-funsuite_2.13-3.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

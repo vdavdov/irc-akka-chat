@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scalatest:scalatest-featurespec_2.13:3.2.10" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.scalatest" artifactId="scalatest-featurespec_2.13" version="3.2.10" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scalatest/scalatest-featurespec_2.13/3.2.10/9aa6b734613ffefdbb2e5d75a23d43b4793d59e4/scalatest-featurespec_2.13-3.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

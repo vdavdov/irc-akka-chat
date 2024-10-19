@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scalatest:scalatest-compatible:3.2.10" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.scalatest" artifactId="scalatest-compatible" version="3.2.10" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scalatest/scalatest-compatible/3.2.10/cbf0fd6bc63a425698eb3f9548d4ab16d17cd31b/scalatest-compatible-3.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.typesafe.akka:akka-coordination_2.13:2.6.20" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.typesafe.akka" artifactId="akka-coordination_2.13" version="2.6.20" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.typesafe.akka/akka-coordination_2.13/2.6.20/b82b2791539c211ebf9fea675a7defb53fd2de6d/akka-coordination_2.13-2.6.20.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scala-lang:scala-library:2.13.8" type="Scala" external-system-id="GRADLE">
+    <properties>
+      <compiler-classpath>
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-compiler/2.13.8/dc45b9539f8f3b850baf3debc1fc7d1b4a0e62af/scala-compiler-2.13.8.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-sbt/compiler-bridge_2.13/1.9.3/f209697417427c3a239f809d1a0fb2e8614a1875/compiler-bridge_2.13-1.9.3-sources.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-sbt/compiler-interface/1.9.3/b882061aec6f9de3093e777c28022eec82a1e802/compiler-interface-1.9.3.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.13.8/994b004d041b18724ec298a135c37e7817d369ec/scala-reflect-2.13.8.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.13.8/5a865f03a794b27e6491740c4c419a19e4511a3d/scala-library-2.13.8.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jline/jline/3.21.0/2bf6f2311356f309fda0412e9389d2499346b5a1/jline-3.21.0.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.9.0/8f503e6d9b500ceff299052d6be75b38c7257758/jna-5.9.0.jar" />
+        <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-sbt/util-interface/1.9.2/b696783ce958ebdf061c53fa173a67f9f1b88754/util-interface-1.9.2.jar" />
+      </compiler-classpath>
+    </properties>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.13.8/5a865f03a794b27e6491740c4c419a19e4511a3d/scala-library-2.13.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
