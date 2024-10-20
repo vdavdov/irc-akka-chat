@@ -1,9 +1,6 @@
 package by.vdavdov.akka
 
-import akka.actor.TypedActor.context
-import akka.actor.typed.{ActorRef, Behavior}
-import akka.actor.typed.scaladsl.Behaviors
-import by.vdavdov.akka.ChatActor.User
+import akka.actor.typed.ActorRef
 import javafx.fxml.FXML
 import javafx.scene.control.{Button, ListView, TextArea, TextField}
 
@@ -29,10 +26,10 @@ class ChatController {
   }
 
   // Устанавливаем ActorRef и имя пользователя
-  def setActorRef(ref: ActorRef[ChatActor.Command], user: String, refString : ActorRef[String]): Unit = {
+  def setActorRef(ref: ActorRef[ChatActor.Command], user: String, stringRef : ActorRef[String]): Unit = {
     actorRef = ref
     username = user
-    actorRefString = refString
+    actorRefString = stringRef
 
     actorRef ! ChatActor.JoinGroup(username, actorRefString)
 
