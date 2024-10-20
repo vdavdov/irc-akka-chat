@@ -25,7 +25,7 @@ object ChatApp {
     val cluster = Cluster(system)
 
 
-    cluster.manager ! Join(Address("akka", "ChatCluster", "127.0.0.1", 2553)) // и тут меняю каждый раз
+    cluster.manager ! Join(Address("akka", "ChatCluster", "127.0.0.1", 2552)) // и тут меняю каждый раз
 
     Application.launch(classOf[ChatApplication], args: _*)
   }
