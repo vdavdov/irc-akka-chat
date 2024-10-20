@@ -1,11 +1,13 @@
 package by.vdavdov.akka
 
+import akka.actor.Address
 import akka.actor.typed.{ActorRef, ActorSystem}
 import akka.cluster.typed.{Cluster, Join}
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.stage.Stage
+
 import java.util.UUID
 
 object ChatApp {
@@ -23,9 +25,8 @@ object ChatApp {
     val cluster = Cluster(system)
 
 
-    cluster.manager ! Join(cluster.selfMember.address.copy(port = Some(2553)))
+    cluster.manager ! Join(Address("akka", "ChatCluster", "127.0.0.1", 2553)) // и тут меняю каждый раз
 
-    // Запускаем приложение
     Application.launch(classOf[ChatApplication], args: _*)
   }
 
